@@ -96,7 +96,7 @@ passed to this util.
 
 Compiles the source to the root folder to a file called `lib.jar`.
 This is used to create a library, which can be used from
-inside the `lib/` directory, no entry points are needed for this.
+inside the `libs/` directory, no entry points are needed for this.
 
 Any arguments which can be passed to `javac` can be as well
 passed to this util.
