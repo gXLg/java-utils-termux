@@ -79,7 +79,7 @@ correct entry point is selected
 or maybe you are trying to create a library, the util will not create
 any `run` script this time
 
-Any arguments which can he passed to `javac` can be as well
+Any arguments which can be passed to `javac` can be as well
 passed to this util.
 
 ## J jar
@@ -89,7 +89,7 @@ Same mechanics apply here as in `J make`, except the run file
 is not being created and instead a temporary manifest contains
 the entry point.
 
-Any arguments which can he passed to `javac` can be as well
+Any arguments which can be passed to `javac` can be as well
 passed to this util.
 
 ## J lib
@@ -98,5 +98,5 @@ Compiles the source to the root folder to a file called `lib.jar`.
 This is used to create a library, which can be used from
 inside the `lib/` directory, no entry points are needed for this.
 
-Any arguments which can he passed to `javac` can be as well
+Any arguments which can be passed to `javac` can be as well
 passed to this util.
