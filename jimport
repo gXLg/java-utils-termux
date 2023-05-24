@@ -1,0 +1,33 @@
+#!bash
+
+find -name "*.java" > sources.txt
+javac -cp libs/* @sources.txt -d tmp 2>errors.txt
+j=0
+declare -A classes
+for i in $(cat errors.txt | grep "symbol:" | cut -d ":" -f 2)
+do
+  if [[ $j == 1 ]]
+  then
+    classes[$i]=1
+    j=0
+  else
+    j=1
+  fi
+done
+
+jar -tf libs/* | grep "\.class" | grep -v "\\$" | grep -v "\\-info" | cut -d "." -f 1 | sed "s#/#.#g" > libs_classlist
+
+for i in "${!classes[@]}"
+do
+  r=$(cat $(dirname $0)/java_classlist libs_classlist | grep "\.$i\$")
+  if [[ $r ]]; then
+    echo "import $r;"
+  else
+    echo "[\!] $i not found"
+  fi
+done
+
+rm -rf tmp
+rm errors.txt
+rm sources.txt
+rm libs_classlist

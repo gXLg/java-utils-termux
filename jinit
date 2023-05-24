@@ -1,0 +1,4 @@
+#!bash
+
+rm -rf src libs
+mkdir src libs

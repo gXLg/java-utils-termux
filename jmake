@@ -1,0 +1,31 @@
+#!bash
+
+rm -rf out && \
+mkdir out && \
+find -name "*.java" > sources.txt && \
+javac -cp libs/* @sources.txt -d out $* && \
+rm sources.txt && \
+echo -e "# Select Main\n" > run && \
+k=0 && \
+for i in $(find out -name "*.class"); do
+  if (
+    javap $i |
+    grep -F "public static void main(java.lang.String[]);"
+  ) > /dev/null; then
+    j=${i#*/}
+    j=${j%.*}
+    j=${j//\//.}
+    echo "#java -cp libs/*:out $j" >> run
+    k=$((k + 1))
+    l="java -cp libs/*:out $j"
+  fi
+done && \
+(chmod +x run) && \
+if [[ $k == 1 ]]; then
+  echo $l > run
+elif [[ $k == 0 ]]; then
+  echo "No main method could be found!"
+  rm run
+else
+  nano run
+fi

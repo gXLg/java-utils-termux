@@ -1,0 +1,14 @@
+#!bash
+
+p="${1//.//}"
+pa="${p%/*}"
+cl="${1##*.}"
+mkdir -p "src/$pa"
+echo -e "package ${1%.*};\n" > src/$p.java
+if [[ "$2" == "main" ]]; then
+  echo "public class $cl {" >> src/$p.java
+  echo "  public static void main(String[] args){ }" >> src/$p.java
+  echo "}" >> src/$p.java
+else
+  echo "public class $cl { }" >> src/$p.java
+fi

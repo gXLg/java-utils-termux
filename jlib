@@ -1,0 +1,10 @@
+#!bash
+
+rm -rf out && \
+mkdir out && \
+find -name "*.java" > sources.txt && \
+javac -cp libs/* @sources.txt -d out $* && \
+rm sources.txt && \
+echo "Class-Path: $(ls libs/*)" > manifest.txt && \
+jar cfm lib.jar manifest.txt -C out . && \
+rm manifest.txt
