@@ -27,4 +27,4 @@ elif [[ $k == 0 ]]; then
 else
   nano main
 fi && \
-echo "jar{manifest{attributes('Main-Class':$(cat main))}}" && rm main && rm -rf out
+echo "jar{manifest{attributes('Main-Class':'$(cat main)')}}" && rm main && rm -rf out
