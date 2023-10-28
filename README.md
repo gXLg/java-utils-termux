@@ -105,6 +105,6 @@ passed to this util.
 
 Prints out the main class, the same procedure as in JMake.
 
-# J bmain
+# J mbuild
 
 Same as JMain, but for `build.gradle` file.
