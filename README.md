@@ -100,3 +100,11 @@ inside the `libs/` directory, no entry points are needed for this.
 
 Any arguments which can be passed to `javac` can be as well
 passed to this util.
+
+# J main
+
+Prints out the main class, the same procedure as in JMake.
+
+# J bmain
+
+Same as JMain, but for `build.gradle` file.
